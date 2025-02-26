@@ -5,8 +5,8 @@ import 'package:meta/meta.dart';
 part 'signin_event.dart';
 part 'signin_state.dart';
 
-class SigninBloc extends Bloc<SigninEvent, SigninState> {
-  SigninBloc() : super(SigninInitial()) {
+class SigninBloc extends Bloc<SigninEvent, SignInUserState> {
+  SigninBloc() : super(SignInUserState()) {
     on<EmailEvent>(_emailEvent);
     on<PasswordEvent>(_passwordEvent);
   }
