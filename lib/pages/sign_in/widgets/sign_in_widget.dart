@@ -69,6 +69,7 @@ Widget buildTextField(
   String hintText,
   String textType,
   String iconName,
+  void Function(String value)? func,
 ) {
   return Container(
     margin: EdgeInsets.only(bottom: 20.h),
@@ -93,6 +94,7 @@ Widget buildTextField(
           height: 50.h,
           width: 270.w,
           child: TextField(
+            onChanged: func,
             autocorrect: false,
             obscureText: textType == 'password' ? true : false,
             keyboardType: TextInputType.multiline,
@@ -159,8 +161,10 @@ Widget forgotPassword() {
   );
 }
 
-Widget buildLogInButtons(String buttonName, String type) {
+Widget buildLogInButtons(
+    String buttonName, String type, void Function()? onTap) {
   return GestureDetector(
+    onTap: onTap,
     child: Container(
       margin: type == 'login'
           ? EdgeInsets.only(top: 40.h)
@@ -168,7 +172,8 @@ Widget buildLogInButtons(String buttonName, String type) {
       width: 325.w,
       height: 50.h,
       decoration: BoxDecoration(
-        color: Colors.blue,
+        border: type == 'login' ? null : Border.all(),
+        color: type == 'login' ? Colors.blue : Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Center(
@@ -177,7 +182,7 @@ Widget buildLogInButtons(String buttonName, String type) {
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.normal,
-            color: Colors.white,
+            color: type == 'login' ? Colors.white : Colors.black,
           ),
         ),
       ),

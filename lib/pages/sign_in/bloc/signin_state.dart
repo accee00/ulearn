@@ -9,7 +9,10 @@ class SignInUserState extends SigninState {
   final String email;
   final String password;
 
-  SignInUserState({this.email = '', this.password = ''});
+  SignInUserState({
+    this.email = '',
+    this.password = '',
+  });
   SignInUserState copyWith({String? email, String? password}) {
     return SignInUserState(
       email: email ?? this.email,
