@@ -69,7 +69,9 @@ class _SignInState extends State<SignIn> {
                             buildLogInButtons(
                               'Register',
                               'register',
-                              () {},
+                              () {
+                                Navigator.pushNamed(context, 'register');
+                              },
                             ),
                           ],
                         ),

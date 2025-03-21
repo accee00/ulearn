@@ -1,7 +1,8 @@
+import 'package:app_bloc/common/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildAppBar() {
+AppBar buildAppBar([String title = 'Log In']) {
   return AppBar(
     bottom: PreferredSize(
       preferredSize: Size.fromHeight(1),
@@ -11,7 +12,7 @@ AppBar buildAppBar() {
       ),
     ),
     title: Text(
-      'Log In',
+      title,
       style: TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.normal,
@@ -173,7 +174,7 @@ Widget buildLogInButtons(
       height: 50.h,
       decoration: BoxDecoration(
         border: type == 'login' ? null : Border.all(),
-        color: type == 'login' ? Colors.blue : Colors.white,
+        color: type == 'login' ? AppColors.primaryElement : Colors.white,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Center(
