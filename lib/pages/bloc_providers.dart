@@ -1,3 +1,4 @@
+import 'package:app_bloc/pages/register/bloc/register_bloc.dart';
 import 'package:app_bloc/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,9 @@ class AppBlocProviders {
         ),
         BlocProvider<SigninBloc>(
           create: (_) => SigninBloc(),
-        )
+        ),
+        BlocProvider<RegisterBloc>(
+          create: (_) => RegisterBloc(),
+        ),
       ];
 }
