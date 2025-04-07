@@ -1,9 +1,8 @@
+import 'package:app_bloc/common/routes/pages.dart';
 import 'package:app_bloc/firebase_options.dart';
-import 'package:app_bloc/pages/bloc_providers.dart';
-import 'package:app_bloc/pages/home/my_home_page.dart';
+import 'package:app_bloc/pages/application/application_page.dart';
 import 'package:app_bloc/pages/register/register.dart';
 import 'package:app_bloc/pages/sign_in/sign_in.dart';
-import 'package:app_bloc/pages/welcome/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: AppBlocProviders.allBlocProvider,
+      providers: [...AppPages.allBlocProviders(context)],
       child: ScreenUtilInit(
         builder: (context, child) {
           return MaterialApp(
@@ -34,9 +33,8 @@ class MyApp extends StatelessWidget {
               ),
             ),
             debugShowCheckedModeBanner: false,
-            home: const Welcome(),
+            home: const ApplicationPage(),
             routes: {
-              '/myHomePage': (context) => const MyHomePage(),
               '/signIn': (context) => const SignIn(),
               'register': (context) => const Register(),
             },
