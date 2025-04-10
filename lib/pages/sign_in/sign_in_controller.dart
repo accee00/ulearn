@@ -1,3 +1,4 @@
+import 'package:app_bloc/common/routes/names.dart';
 import 'package:app_bloc/common/widget/flutter_toast.dart';
 import 'package:app_bloc/pages/sign_in/bloc/signin_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -41,8 +42,13 @@ class SignInController {
             toastInfo(msg: "You need to verify your email account");
             return;
           }
-          var user = credential.user;
+          final user = credential.user;
+          print(user.toString());
           if (user != null) {
+            if (context.mounted) {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, AppRoutes.application, (_) => false);
+            }
           } else {
             toastInfo(msg: "Currently you are not a user of this app.");
             return;

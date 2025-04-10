@@ -1,18 +1,12 @@
-import 'package:app_bloc/common/routes/pages.dart';
-import 'package:app_bloc/firebase_options.dart';
-import 'package:app_bloc/pages/application/application_page.dart';
-import 'package:app_bloc/pages/register/register.dart';
-import 'package:app_bloc/pages/sign_in/sign_in.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:app_bloc/common/routes/routes.dart';
+import 'package:app_bloc/global.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  await Global.init();
   runApp(const MyApp());
 }
 
@@ -33,11 +27,9 @@ class MyApp extends StatelessWidget {
               ),
             ),
             debugShowCheckedModeBanner: false,
-            home: const ApplicationPage(),
-            routes: {
-              '/signIn': (context) => const SignIn(),
-              'register': (context) => const Register(),
-            },
+            onGenerateRoute: (settings) =>
+                AppPages.generateRouteSetting(settings),
+            initialRoute: AppRoutes.initial,
           );
         },
       ),

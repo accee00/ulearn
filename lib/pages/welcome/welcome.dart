@@ -1,4 +1,6 @@
+import 'package:app_bloc/common/constant.dart';
 import 'package:app_bloc/common/values/colors.dart';
+import 'package:app_bloc/global.dart';
 import 'package:app_bloc/pages/welcome/bloc/welcome_bloc.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
@@ -134,8 +136,10 @@ Widget _page(
               curve: Curves.decelerate,
             );
           } else {
+            Global.storageService.setBool(Constant.deviceFistOpen, true);
+
             Navigator.pushNamedAndRemoveUntil(
-                context, '/signIn', (route) => false);
+                context, '/sign_in', (route) => false);
           }
         },
         child: Container(
