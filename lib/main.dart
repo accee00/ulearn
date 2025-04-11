@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             onGenerateRoute: (settings) =>
                 AppPages.generateRouteSetting(settings),
-            initialRoute: AppRoutes.initial,
+            initialRoute: AppRoutes.application,
           );
         },
       ),

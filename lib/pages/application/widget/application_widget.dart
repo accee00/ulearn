@@ -1,3 +1,4 @@
+import 'package:app_bloc/pages/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -5,9 +6,7 @@ import '../../../common/values/colors.dart';
 
 Widget buildPage(int index) {
   List<Widget> widget = [
-    Center(
-      child: Text('Home'),
-    ),
+    const HomePage(),
     Center(
       child: Text('Search'),
     ),
